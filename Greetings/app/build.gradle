@@ -1,5 +1,27 @@
 apply plugin: 'com.android.application'
 
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags'
+        standardOutput = stdout
+    }
+    def tag =  stdout.toString().trim()
+    stdout.reset()
+
+    exec {
+        commandLine 'git', 'rev-list', tag + '..HEAD', '--no-merges', '--count'
+        standardOutput = stdout
+    }
+    def patch = stdout.toString().trim()
+
+    return tag + '.' + patch
+}
+
+def getVersionCode = { ->
+    return getVersionName().replace(".", "").toInteger()
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -26,17 +48,4 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-}
-
-def getVersionName = { ->
-    def out = new ByteArrayOutputStream()
-    exec {
-        commandLine 'git', 'describe', '--tags'
-        standardOutput = stdout
-    }
-    return out.toString().trim()
-}
-
-def getVersionCode = { ->
-    return getVersionName().replace('.', '').toInteger()
 }

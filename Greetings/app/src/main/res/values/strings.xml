@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Greetings</string>
+    <string name="version_error">Error occurred while trying to get app version</string>
+    <string name="version_name">Version name: %1$s</string>
 </resources>
