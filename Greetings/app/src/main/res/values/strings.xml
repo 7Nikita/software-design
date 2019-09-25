@@ -2,4 +2,9 @@
     <string name="app_name">Greetings</string>
     <string name="version_error">Error occurred while trying to get app version</string>
     <string name="version_name">Version name: %1$s</string>
+    <string name="device_id_button">get id</string>
+    <string name="device_id">Device ID: %1$s</string>
+    <string name="ok_button">ok</string>
+    <string name="cancel_button">cancel</string>
+    <string name="rps_permission_request">READ_PHONE_STATE_PERMISSION is required to get the DEVICE_ID.</string>
 </resources>
