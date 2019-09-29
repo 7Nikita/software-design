@@ -1,21 +1,25 @@
 apply plugin: 'com.android.application'
 
-def getVersionName = { ->
+def getVersionTag = { ->
     def stdout = new ByteArrayOutputStream()
     exec {
         commandLine 'git', 'describe', '--abbrev=0'
         standardOutput = stdout
     }
-    def tag =  stdout.toString().trim()
-    stdout.reset()
+    return stdout.toString().trim()
+}
 
+def getVersionPatch = { ->
+    def stdout = new ByteArrayOutputStream()
     exec {
-        commandLine 'git', 'rev-list', tag + '..HEAD', '--no-merges', '--count'
+        commandLine 'git', 'rev-list', getVersionTag() + '..HEAD', '--no-merges', '--count'
         standardOutput = stdout
     }
-    def patch = stdout.toString().trim()
+    return stdout.toString().trim()
+}
 
-    return tag + '.' + patch
+def getVersionName = { ->
+    return getVersionTag() + "." + getVersionPatch()
 }
 
 def getVersionCode = { ->
