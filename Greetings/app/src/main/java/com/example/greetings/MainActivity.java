@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         deviceIdButton = findViewById(R.id.deviceId);
         applicationVersionView = findViewById(R.id.applicationVerison);
 
-        if (applicationVersion != null) {
-            applicationVersionView.setText(getString(R.string.version_name, applicationVersion));
-        }
+        applicationVersionView.setText(getString(R.string.version_name, applicationVersion));
 
         deviceIdButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -69,15 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getApplicationVersion() {
-        try {
-            PackageInfo pInfo = getApplicationContext()
-                    .getPackageManager()
-                    .getPackageInfo(getPackageName(),0);
-            return pInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
+        return BuildConfig.VERSION_NAME;
     }
 
     private String getDeviceId() {
