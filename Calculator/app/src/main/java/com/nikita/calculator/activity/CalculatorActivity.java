@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -57,7 +56,7 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
-    public void onKeyPress(@NonNull View view) {
+    public void onKeyPress(View view) {
         switch (view.getId()) {
             case R.id.buttonPi:
                 expression.append(String.valueOf(mathPi));
@@ -86,8 +85,9 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private void onDelete() {
-        if (expression.length() > 0)
-            expression.setText(expression.getText().delete(expression.length() - 1, expression.length()));
+        final int expressionLength = expression.length();
+        if (expressionLength > 0)
+            expression.setText(expression.getText().delete(expressionLength - 1, expressionLength));
     }
 
     private void onEquals() {

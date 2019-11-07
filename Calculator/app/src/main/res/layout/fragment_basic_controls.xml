@@ -13,22 +13,22 @@
         <Button
             android:id="@+id/button7"
             style="@style/Button"
-            android:text="7"/>
+            android:text="@string/seven_character"/>
 
         <Button
             android:id="@+id/button4"
             style="@style/Button"
-            android:text="4"/>
+            android:text="@string/four_character"/>
 
         <Button
             android:id="@+id/button1"
             style="@style/Button"
-            android:text="1"/>
+            android:text="@string/one_character"/>
 
         <Button
             android:id="@+id/buttonDot"
             style="@style/Button"
-            android:text="."/>
+            android:text="@string/dot_character"/>
 
     </LinearLayout>
 
@@ -42,19 +42,19 @@
         <Button
             android:id="@+id/button8"
             style="@style/Button"
-            android:text="8"/>
+            android:text="@string/eight_character"/>
         <Button
             android:id="@+id/button5"
             style="@style/Button"
-            android:text="5"/>
+            android:text="@string/five_character"/>
         <Button
             android:id="@+id/button2"
             style="@style/Button"
-            android:text="2"/>
+            android:text="@string/two_character"/>
         <Button
             android:id="@+id/button0"
             style="@style/Button"
-            android:text="0"/>
+            android:text="@string/zero_character"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,19 +67,19 @@
         <Button
             android:id="@+id/button9"
             style="@style/Button"
-            android:text="9"/>
+            android:text="@string/nine_character"/>
         <Button
             android:id="@+id/button6"
             style="@style/Button"
-            android:text="6"/>
+            android:text="@string/six_character"/>
         <Button
             android:id="@+id/button3"
             style="@style/Button"
-            android:text="3"/>
+            android:text="@string/three_character"/>
         <Button
             android:id="@+id/buttonEquality"
             style="@style/Button"
-            android:text="="/>
+            android:text="@string/equality_character"/>
 
     </LinearLayout>
 

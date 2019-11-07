@@ -13,23 +13,23 @@
         <Button
             android:id="@+id/buttonDelete"
             style="@style/ButtonControl"
-            android:text="⌫"/>
+            android:text="@string/delete_character"/>
         <Button
             android:id="@+id/buttonPlus"
             style="@style/ButtonControl"
-            android:text="+"/>
+            android:text="@string/plus_character"/>
         <Button
             android:id="@+id/buttonMinus"
             style="@style/ButtonControl"
-            android:text="-"/>
+            android:text="@string/minus_character"/>
         <Button
             android:id="@+id/buttonMultiply"
             style="@style/ButtonControl"
-            android:text="*"/>
+            android:text="@string/multiply_character"/>
         <Button
             android:id="@+id/buttonDivide"
             style="@style/ButtonControl"
-            android:text="/"/>
+            android:text="@string/divide_character"/>
     </LinearLayout>
 
 </LinearLayout>
