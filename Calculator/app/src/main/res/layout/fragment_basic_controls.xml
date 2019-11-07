@@ -11,18 +11,22 @@
         android:background="@color/colorKeyPad">
 
         <Button
+            android:id="@+id/button7"
             style="@style/Button"
             android:text="7"/>
 
         <Button
+            android:id="@+id/button4"
             style="@style/Button"
             android:text="4"/>
 
         <Button
+            android:id="@+id/button1"
             style="@style/Button"
             android:text="1"/>
 
         <Button
+            android:id="@+id/buttonDot"
             style="@style/Button"
             android:text="."/>
 
@@ -36,15 +40,19 @@
         android:background="@color/colorKeyPad">
 
         <Button
+            android:id="@+id/button8"
             style="@style/Button"
             android:text="8"/>
         <Button
+            android:id="@+id/button5"
             style="@style/Button"
             android:text="5"/>
         <Button
+            android:id="@+id/button2"
             style="@style/Button"
             android:text="2"/>
         <Button
+            android:id="@+id/button0"
             style="@style/Button"
             android:text="0"/>
     </LinearLayout>
@@ -57,21 +65,25 @@
         android:background="@color/colorKeyPad">
 
         <Button
+            android:id="@+id/button9"
             style="@style/Button"
             android:text="9"/>
         <Button
+            android:id="@+id/button6"
             style="@style/Button"
             android:text="6"/>
         <Button
+            android:id="@+id/button3"
             style="@style/Button"
             android:text="3"/>
         <Button
+            android:id="@+id/buttonEquality"
             style="@style/Button"
             android:text="="/>
 
     </LinearLayout>
 
-    <include layout="@layout/arithmetic_controls"
+    <include layout="@layout/fragment_arithmetic_controls"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight="1"/>

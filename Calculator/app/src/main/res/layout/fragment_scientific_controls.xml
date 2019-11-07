@@ -11,16 +11,20 @@
 
         <Button
             style="@style/ButtonScientific"
-            android:text="SIN"/>
+            android:id="@+id/buttonSin"
+            android:text="sin"/>
         <Button
+            android:id="@+id/buttonPi"
             style="@style/ButtonScientific"
             android:text="π"/>
         <Button
+            android:id="@+id/buttonLog"
             style="@style/ButtonScientific"
             android:text="log"/>
         <Button
+            android:id="@+id/buttonLBracket"
             style="@style/ButtonScientific"
-            android:text="X^2"/>
+            android:text="("/>
 
     </LinearLayout>
 
@@ -31,17 +35,21 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/buttonCos"
             style="@style/ButtonScientific"
             android:text="cos"/>
         <Button
+            android:id="@+id/buttonExp"
             style="@style/ButtonScientific"
             android:text="E"/>
         <Button
-            style="@style/ButtonScientific"
-            android:text="ln"/>
-        <Button
+            android:id="@+id/buttonPow"
             style="@style/ButtonScientific"
             android:text="^"/>
+        <Button
+            android:id="@+id/buttonRBracket"
+            style="@style/ButtonScientific"
+            android:text=")"/>
 
     </LinearLayout>
 
@@ -52,15 +60,19 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/buttonTan"
             style="@style/ButtonScientific"
             android:text="tan"/>
         <Button
+            android:id="@+id/buttonSqrt"
             style="@style/ButtonScientific"
             android:text="√"/>
         <Button
+            android:id="@+id/buttonFactorial"
             style="@style/ButtonScientific"
             android:text="!"/>
         <Button
+            android:id="@+id/buttonPercent"
             style="@style/ButtonScientific"
             android:text="%"/>
 

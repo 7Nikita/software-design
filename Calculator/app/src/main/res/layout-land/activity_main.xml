@@ -27,13 +27,13 @@
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->
 <!--            android:layout_weight="1"-->
-<!--            tools:layout="@layout/basic_controls" />-->
+<!--            tools:layout="@layout/fragment_basic_controls" />-->
 
 <!--        <fragment-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->
 <!--            android:layout_weight="1"-->
-<!--            tools:layout="@layout/scientific_controls"/>-->
+<!--            tools:layout="@layout/fragment_scientific_controls"/>-->
 
         <FrameLayout
             android:id="@+id/basicMode"

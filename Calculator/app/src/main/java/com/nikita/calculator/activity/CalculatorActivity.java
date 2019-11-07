@@ -19,6 +19,7 @@ import com.nikita.calculator.fragment.BasicControlsFragment;
 import com.nikita.calculator.fragment.ScientificControlsFragment;
 
 import com.google.common.collect.ImmutableList;
+import com.udojava.evalex.Expression;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ import java.util.List;
 public class CalculatorActivity extends AppCompatActivity {
 
     private EditText expression;
+
+    private final double mathPi = 3.14;
+    private final double mathE = 2.72;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +58,42 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void onKeyPress(@NonNull View view) {
-        expression.append(((Button) view).getText());
+        switch (view.getId()) {
+            case R.id.buttonPi:
+                expression.append(String.valueOf(mathPi));
+                break;
+            case R.id.buttonExp:
+                expression.append(String.valueOf(mathE));
+                break;
+            case R.id.buttonSin:
+            case R.id.buttonCos:
+            case R.id.buttonTan:
+            case R.id.buttonLog:
+                expression.append(((Button) view).getText() + "(");
+                break;
+            case R.id.buttonSqrt:
+                expression.append("sqrt(");
+                break;
+            case R.id.buttonDelete:
+                onDelete();
+                break;
+            case R.id.buttonEquality:
+                onEquals();
+                break;
+            default:
+                expression.append(((Button) view).getText());
+        }
+    }
+
+    private void onDelete() {
+        if (expression.length() > 0)
+            expression.setText(expression.getText().delete(expression.length() - 1, expression.length()));
+    }
+
+    private void onEquals() {
+        Expression exp = new Expression(expression.getText().toString());
+        expression.setText(exp.eval().toString());
+
     }
 }
 

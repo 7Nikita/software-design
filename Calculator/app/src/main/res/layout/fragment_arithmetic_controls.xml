@@ -11,18 +11,23 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/buttonDelete"
             style="@style/ButtonControl"
             android:text="⌫"/>
         <Button
+            android:id="@+id/buttonPlus"
             style="@style/ButtonControl"
             android:text="+"/>
         <Button
+            android:id="@+id/buttonMinus"
             style="@style/ButtonControl"
             android:text="-"/>
         <Button
+            android:id="@+id/buttonMultiply"
             style="@style/ButtonControl"
             android:text="*"/>
         <Button
+            android:id="@+id/buttonDivide"
             style="@style/ButtonControl"
             android:text="/"/>
     </LinearLayout>
