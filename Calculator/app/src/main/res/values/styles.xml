@@ -15,6 +15,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:onClick">onKeyPress</item>
     </style>
 
     <style name="ButtonControl" parent="Button">

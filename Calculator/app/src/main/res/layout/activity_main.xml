@@ -6,13 +6,18 @@
     android:orientation="vertical"
     tools:context=".activity.CalculatorActivity">
 
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:textAlignment="textEnd"
+        android:inputType="none"
+        android:textIsSelectable="true"
         android:background="@color/colorKeyPad"
-        android:elevation="10dp"/>
-
+        android:layout_weight="2"
+        android:editable="false"
+        android:textSize="32sp"
+        android:textColor="@android:color/background_light"
+        android:id="@+id/expressionText"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/frame"

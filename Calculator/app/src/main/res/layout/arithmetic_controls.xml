@@ -12,7 +12,7 @@
 
         <Button
             style="@style/ButtonControl"
-            android:text="DEL"/>
+            android:text="⌫"/>
         <Button
             style="@style/ButtonControl"
             android:text="+"/>
