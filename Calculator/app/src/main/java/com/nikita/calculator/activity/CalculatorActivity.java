@@ -93,11 +93,10 @@ public class CalculatorActivity extends AppCompatActivity {
     private void onEquals() {
         Expression exp = new Expression(expression.getText().toString());
         try {
-            expression.setText(exp.eval().toString());
+            expression.setText(String.valueOf(exp.eval()));
         } catch (ArithmeticException | IllegalStateException e) {
             expression.setText(e.getMessage());
         }
-
     }
 }
 
