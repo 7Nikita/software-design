@@ -58,6 +58,9 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void onKeyPress(View view) {
         switch (view.getId()) {
+            case R.id.buttonFactorial:
+                expression.append("fact(");
+                break;
             case R.id.buttonPi:
                 expression.append(String.valueOf(mathPi));
                 break;
@@ -93,7 +96,7 @@ public class CalculatorActivity extends AppCompatActivity {
     private void onEquals() {
         Expression exp = new Expression(expression.getText().toString());
         try {
-            expression.setText(String.valueOf(exp.eval()));
+            expression.setText(exp.eval().stripTrailingZeros().toPlainString());
         } catch (ArithmeticException | IllegalStateException e) {
             expression.setText(e.getMessage());
         }

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.example.calculator"
+        applicationId 'com.nikita.calculator'
         minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
@@ -20,6 +20,20 @@ android {
     compileOptions {
         targetCompatibility = 1.8
         sourceCompatibility = 1.8
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        demo {
+            dimension "version"
+            applicationIdSuffix ".demo"
+            versionNameSuffix "-demo"
+        }
+        full {
+            dimension "version"
+            applicationIdSuffix ".full"
+            versionNameSuffix "-full"
+        }
     }
 }
 
