@@ -20,7 +20,7 @@
         <Button
             android:id="@+id/buttonLog"
             style="@style/ButtonScientific"
-            android:text="@string/log_character"/>
+            android:text="@string/ln_character"/>
         <Button
             android:id="@+id/buttonLBracket"
             style="@style/ButtonScientific"

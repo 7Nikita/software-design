@@ -20,7 +20,8 @@
     <string name="sin_character">sin</string>
     <string name="cos_character">cos</string>
     <string name="tan_character">tan</string>
-    <string name="log_character">ln</string>
+    <string name="log_character">log</string>
+    <string name="ln_character">ln</string>
     <string name="lbracket_character">(</string>
     <string name="rbracket_character">)</string>
     <string name="factorial_character">!</string>
@@ -28,5 +29,6 @@
     <string name="percent_character">%</string>
     <string name="sqrt_character">√</string>
     <string name="exp_character">E</string>
-    <string name="pi_character">π</string>
+    <string name="pi_character">PI</string>
+    <string name="ac_character">AC</string>
 </resources>

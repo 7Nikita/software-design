@@ -15,6 +15,10 @@
             style="@style/ButtonControl"
             android:text="@string/delete_character"/>
         <Button
+            android:id="@+id/buttonAC"
+            style="@style/ButtonControl"
+            android:text="@string/ac_character"/>
+        <Button
             android:id="@+id/buttonPlus"
             style="@style/ButtonControl"
             android:text="@string/plus_character"/>

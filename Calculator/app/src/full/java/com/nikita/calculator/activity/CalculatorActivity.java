@@ -2,10 +2,12 @@ package com.nikita.calculator.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -14,21 +16,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.nikita.calculator.ControlsAdapter;
 import com.nikita.calculator.R;
+import com.nikita.calculator.service.CalculationsService;
 import com.nikita.calculator.fragment.BasicControlsFragment;
 import com.nikita.calculator.fragment.ScientificControlsFragment;
 
 import com.google.common.collect.ImmutableList;
-import com.udojava.evalex.Expression;
 
 import java.util.List;
 
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    private EditText expression;
-
-    private final double mathPi = 3.14;
-    private final double mathE = 2.72;
+    private EditText mExpression;
+    private final CalculationsService mService = new CalculationsService();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,12 +36,14 @@ public class CalculatorActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
         final List<Fragment> fragmentList = ImmutableList.of(
                 new BasicControlsFragment(),
                 new ScientificControlsFragment()
         );
 
-        expression = findViewById(R.id.expressionText);
+        mExpression = findViewById(R.id.expressionText);
+        Button b = findViewById(R.id.buttonEquality);
 
         int orientation = this.getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -56,50 +58,9 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
-    public void onKeyPress(View view) {
-        switch (view.getId()) {
-            case R.id.buttonFactorial:
-                expression.append("fact(");
-                break;
-            case R.id.buttonPi:
-                expression.append(String.valueOf(mathPi));
-                break;
-            case R.id.buttonExp:
-                expression.append(String.valueOf(mathE));
-                break;
-            case R.id.buttonSin:
-            case R.id.buttonCos:
-            case R.id.buttonTan:
-            case R.id.buttonLog:
-                expression.append(((Button) view).getText() + "(");
-                break;
-            case R.id.buttonSqrt:
-                expression.append("sqrt(");
-                break;
-            case R.id.buttonDelete:
-                onDelete();
-                break;
-            case R.id.buttonEquality:
-                onEquals();
-                break;
-            default:
-                expression.append(((Button) view).getText());
-        }
+    public void onKeyPress(@NonNull View view) {
+        mExpression.setText(mService.evaluate(((Button) view).getText().toString()));
     }
 
-    private void onDelete() {
-        final int expressionLength = expression.length();
-        if (expressionLength > 0)
-            expression.setText(expression.getText().delete(expressionLength - 1, expressionLength));
-    }
-
-    private void onEquals() {
-        Expression exp = new Expression(expression.getText().toString());
-        try {
-            expression.setText(exp.eval().stripTrailingZeros().toPlainString());
-        } catch (ArithmeticException | IllegalStateException e) {
-            expression.setText(e.getMessage());
-        }
-    }
 }
 
