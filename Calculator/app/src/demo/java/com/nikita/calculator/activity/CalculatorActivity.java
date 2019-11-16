@@ -15,14 +15,15 @@ import com.nikita.calculator.R;
 import com.nikita.calculator.fragment.BasicControlsFragment;
 
 import com.google.common.collect.ImmutableList;
-import com.udojava.evalex.Expression;
+import com.nikita.calculator.service.CalculationsService;
 
 import java.util.List;
 
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    private EditText expression;
+    private EditText mExpression;
+    private final CalculationsService mService = CalculationsService.getInstance();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,42 +31,22 @@ public class CalculatorActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        final List<Fragment> fragmentList = ImmutableList.of(
-                new BasicControlsFragment()
-        );
+        mExpression = findViewById(R.id.expressionText);
 
-        expression = findViewById(R.id.expressionText);
+        final BasicControlsFragment basicControlsFragment = new BasicControlsFragment();
+        basicControlsFragment.setExpression(mExpression);
+
+        final List<Fragment> fragmentList = ImmutableList.of(
+                basicControlsFragment
+        );
 
         final ViewPager viewPager = findViewById(R.id.frame);
         viewPager.setAdapter(new ControlsAdapter(getSupportFragmentManager(), fragmentList));
     }
 
     public void onKeyPress(View view) {
-        switch (view.getId()) {
-            case R.id.buttonDelete:
-                onDelete();
-                break;
-            case R.id.buttonEquality:
-                onEquals();
-                break;
-            default:
-                expression.append(((Button) view).getText());
-        }
+        mExpression.setText(mService.evaluate(((Button) view).getText().toString()));
     }
 
-    private void onDelete() {
-        final int expressionLength = expression.length();
-        if (expressionLength > 0)
-            expression.setText(expression.getText().delete(expressionLength - 1, expressionLength));
-    }
-
-    private void onEquals() {
-        Expression exp = new Expression(expression.getText().toString());
-        try {
-            expression.setText(exp.eval().toString());
-        } catch (Exception e) {
-            expression.setText(e.getMessage());
-        }
-    }
 }
 
