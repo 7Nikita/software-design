@@ -12,8 +12,13 @@
 
         <Button
             android:id="@+id/buttonDelete"
-            style="@style/ButtonControl"
-            android:text="@string/delete_character"/>
+            android:text="@string/delete_character"
+            android:background="@color/colorControlButton"
+            android:textSize="24sp"
+            android:textColor="@color/colorText"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
         <Button
             android:id="@+id/buttonAC"
             style="@style/ButtonControl"

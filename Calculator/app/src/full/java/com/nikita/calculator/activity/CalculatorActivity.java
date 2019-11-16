@@ -2,7 +2,6 @@ package com.nikita.calculator.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +27,7 @@ import java.util.List;
 public class CalculatorActivity extends AppCompatActivity {
 
     private EditText mExpression;
-    private final CalculationsService mService = new CalculationsService();
+    private final CalculationsService mService = CalculationsService.getInstance();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,14 +35,16 @@ public class CalculatorActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        mExpression = findViewById(R.id.expressionText);
+
+        final BasicControlsFragment basicControlsFragment = new BasicControlsFragment();
+        basicControlsFragment.setExpression(mExpression);
 
         final List<Fragment> fragmentList = ImmutableList.of(
-                new BasicControlsFragment(),
+                basicControlsFragment,
                 new ScientificControlsFragment()
         );
 
-        mExpression = findViewById(R.id.expressionText);
-        Button b = findViewById(R.id.buttonEquality);
 
         int orientation = this.getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_PORTRAIT) {

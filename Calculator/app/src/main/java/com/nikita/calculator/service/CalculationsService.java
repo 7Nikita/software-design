@@ -10,6 +10,14 @@ import com.google.common.collect.ImmutableSet;
 
 public class CalculationsService {
 
+    private static final CalculationsService sInstance = new CalculationsService();
+
+    public static CalculationsService getInstance() {
+        return sInstance;
+    }
+
+    private CalculationsService() {}
+
     private final Set<String> mFunctions = ImmutableSet.of(
             "sin(",
             "cos(",
@@ -30,7 +38,7 @@ public class CalculationsService {
         return mExpression.toString();
     }
 
-    public void update(String text) {
+    private void update(String text) {
 
         if (wasError) {
             wasError = false;
@@ -47,7 +55,7 @@ public class CalculationsService {
             case "cos":
             case "tan":
             case "ln":
-                mExpression.append(text + "(");
+                mExpression.append(text).append("(");
                 break;
             case "√":
                 mExpression.append("sqrt(");
@@ -99,7 +107,7 @@ public class CalculationsService {
 
     private void refactor() {
         String exp = mExpression.toString();
-        exp.replaceAll("ln", "log");
+        exp = exp.replaceAll("ln", "log");
         mExpression = new StringBuilder(exp);
     }
 
