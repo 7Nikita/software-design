@@ -40,9 +40,12 @@ public class CalculatorActivity extends AppCompatActivity {
         final BasicControlsFragment basicControlsFragment = new BasicControlsFragment();
         basicControlsFragment.setExpression(mExpression);
 
+        final ScientificControlsFragment scientificControlsFragment = new ScientificControlsFragment();
+        scientificControlsFragment.setExpression(mExpression);
+
         final List<Fragment> fragmentList = ImmutableList.of(
                 basicControlsFragment,
-                new ScientificControlsFragment()
+                scientificControlsFragment
         );
 
 

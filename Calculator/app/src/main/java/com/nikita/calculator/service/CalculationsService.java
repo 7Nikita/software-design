@@ -22,7 +22,8 @@ public class CalculationsService {
             "sin(",
             "cos(",
             "tan(",
-            "log(",
+            "lg(",
+            "ln(",
             "sqrt(",
             "fact(",
             "PI"
@@ -55,6 +56,7 @@ public class CalculationsService {
             case "cos":
             case "tan":
             case "ln":
+            case "lg":
                 mExpression.append(text).append("(");
                 break;
             case "√":
@@ -98,9 +100,11 @@ public class CalculationsService {
 
         boolean left = Character.isDigit(mExpression.charAt(mExpression.length() - 1)) &&
                 Character.isAlphabetic(text.charAt(text.length() - 1));
+        boolean onlyAlpha = Character.isAlphabetic(text.charAt(text.length() - 1)) &&
+                Character.isAlphabetic(mExpression.charAt(mExpression.length() - 1));
         boolean right = Character.isDigit(text.charAt(text.length() - 1)) &&
                 Character.isAlphabetic(mExpression.charAt(mExpression.length() - 1));
-        if (left || right) {
+        if (left || right || onlyAlpha) {
             mExpression.append("*");
         }
     }
