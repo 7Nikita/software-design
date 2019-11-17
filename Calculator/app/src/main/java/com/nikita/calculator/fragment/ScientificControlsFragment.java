@@ -46,11 +46,10 @@ public class ScientificControlsFragment extends Fragment {
     private void showPopupMenu(View v) {
         PopupMenu popupMenu = new PopupMenu(getContext(), v);
         popupMenu.inflate(R.menu.menu_logs);
-        popupMenu
-                .setOnMenuItemClickListener(item -> {
-                    mExpression.setText(mService.evaluate(item.getTitle().toString()));
-                    return false;
-                });
+        popupMenu.setOnMenuItemClickListener(item -> {
+            mExpression.setText(mService.evaluate(item.getTitle().toString()));
+            return false;
+        });
         popupMenu.show();
     }
 }
