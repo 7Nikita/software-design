@@ -112,6 +112,7 @@ public class CalculationsService {
     private void refactor() {
         String exp = mExpression.toString();
         exp = exp.replaceAll("ln", "log");
+        exp = exp.replaceAll("lg", "log10");
         mExpression = new StringBuilder(exp);
     }
 
