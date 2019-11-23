@@ -9,6 +9,11 @@
 # Java class files
 *.class
 
+# Keystores
+keystores/
+keystore.properties
+*.jks
+
 # Generated files
 bin/
 gen/
