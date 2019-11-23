@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorKeyPad"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:text="@string/delete_character"
+            android:background="@color/colorControlButton"
+            android:textSize="24sp"
+            android:textColor="@color/colorText"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
+        <Button
+            android:id="@+id/buttonAC"
+            style="@style/ButtonControl"
+            android:text="@string/ac_character"/>
+        <Button
+            android:id="@+id/buttonPlus"
+            style="@style/ButtonControl"
+            android:text="@string/plus_character"/>
+        <Button
+            android:id="@+id/buttonMinus"
+            style="@style/ButtonControl"
+            android:text="@string/minus_character"/>
+        <Button
+            android:id="@+id/buttonMultiply"
+            style="@style/ButtonControl"
+            android:text="@string/multiply_character"/>
+        <Button
+            android:id="@+id/buttonDivide"
+            style="@style/ButtonControl"
+            android:text="@string/divide_character"/>
+    </LinearLayout>
+
+</LinearLayout>

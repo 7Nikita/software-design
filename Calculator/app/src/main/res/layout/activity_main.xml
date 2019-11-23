@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.CalculatorActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="textEnd"
+        android:inputType="none"
+        android:textIsSelectable="true"
+        android:background="@color/colorKeyPad"
+        android:layout_weight="2"
+        android:editable="false"
+        android:textSize="32sp"
+        android:textColor="@android:color/background_light"
+        android:id="@+id/expressionText"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+</LinearLayout>

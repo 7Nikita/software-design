@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="delete_character">⌫</string>
+    <string name="plus_character">+</string>
+    <string name="minus_character">-</string>
+    <string name="multiply_character">*</string>
+    <string name="divide_character">/</string>
+    <string name="zero_character">0</string>
+    <string name="one_character">1</string>
+    <string name="two_character">2</string>
+    <string name="three_character">3</string>
+    <string name="four_character">4</string>
+    <string name="five_character">5</string>
+    <string name="six_character">6</string>
+    <string name="seven_character">7</string>
+    <string name="eight_character">8</string>
+    <string name="nine_character">9</string>
+    <string name="dot_character">.</string>
+    <string name="equality_character">=</string>
+    <string name="sin_character">sin</string>
+    <string name="cos_character">cos</string>
+    <string name="tan_character">tan</string>
+    <string name="lg_character">lg</string>
+    <string name="ln_character">ln</string>
+    <string name="lbracket_character">(</string>
+    <string name="rbracket_character">)</string>
+    <string name="factorial_character">!</string>
+    <string name="pow_character">^</string>
+    <string name="percent_character">%</string>
+    <string name="sqrt_character">√</string>
+    <string name="exp_character">E</string>
+    <string name="pi_character">PI</string>
+    <string name="ac_character">AC</string>
+</resources>

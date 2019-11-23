@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            style="@style/ButtonScientific"
+            android:id="@+id/buttonSin"
+            android:text="@string/sin_character"/>
+        <Button
+            android:id="@+id/buttonPi"
+            style="@style/ButtonScientific"
+            android:text="@string/pi_character"/>
+        <Button
+            android:id="@+id/buttonLog"
+            style="@style/ButtonScientific"
+            android:text="@string/ln_character"/>
+        <Button
+            android:id="@+id/buttonLBracket"
+            style="@style/ButtonScientific"
+            android:text="@string/lbracket_character"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonCos"
+            style="@style/ButtonScientific"
+            android:text="@string/cos_character"/>
+        <Button
+            android:id="@+id/buttonExp"
+            style="@style/ButtonScientific"
+            android:text="@string/exp_character"/>
+        <Button
+            android:id="@+id/buttonPow"
+            style="@style/ButtonScientific"
+            android:text="@string/pow_character"/>
+        <Button
+            android:id="@+id/buttonRBracket"
+            style="@style/ButtonScientific"
+            android:text="@string/rbracket_character"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buttonTan"
+            style="@style/ButtonScientific"
+            android:text="@string/tan_character"/>
+        <Button
+            android:id="@+id/buttonSqrt"
+            style="@style/ButtonScientific"
+            android:text="@string/sqrt_character"/>
+        <Button
+            android:id="@+id/buttonFactorial"
+            style="@style/ButtonScientific"
+            android:text="@string/factorial_character"/>
+        <Button
+            android:id="@+id/buttonPercent"
+            style="@style/ButtonScientific"
+            android:text="@string/percent_character"/>
+
+    </LinearLayout>
+
+</LinearLayout>
