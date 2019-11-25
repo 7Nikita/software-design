@@ -20,9 +20,6 @@ import com.nikita.notes.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int ADD_NOTE_REQUEST = 1;
-    public static final int EDIT_NOTE_REQUEST = 2;
-
     private NoteViewModel noteViewModel;
 
     @Override
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-                startActivityForResult(intent, ADD_NOTE_REQUEST);
+                startActivity(intent);
             }
         });
 
@@ -58,32 +55,9 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra(NoteActivity.EXTRA_TITLE, note.getTitle());
                 intent.putExtra(NoteActivity.EXTRA_DESCRIPTION, note.getDescription());
 
-                startActivityForResult(intent, EDIT_NOTE_REQUEST);
+                startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == ADD_NOTE_REQUEST && resultCode == RESULT_OK) {
-            String title = data.getStringExtra(NoteActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(NoteActivity.EXTRA_DESCRIPTION);
-
-            Note note = new Note(title, description);
-            noteViewModel.insert(note);
-        } else if (requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK) {
-            int id = data.getIntExtra(NoteActivity.EXTRA_ID, -1);
-            if (id == -1) return;
-
-            String title = data.getStringExtra(NoteActivity.EXTRA_TITLE);
-            String description = data.getStringExtra(NoteActivity.EXTRA_DESCRIPTION);
-
-            Note note = new Note(title, description);
-            note.setId(id);
-            noteViewModel.update(note);
-        }
     }
 
     @Override

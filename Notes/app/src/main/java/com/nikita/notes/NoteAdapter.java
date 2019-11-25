@@ -59,7 +59,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteHolder> {
             super(view);
             textViewTitle = view.findViewById(R.id.text_view_title);
             textViewDescription = view.findViewById(R.id.text_view_description);
-            view.setOnClickListener(new View.OnClickListener(){
+            view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();

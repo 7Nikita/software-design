@@ -5,4 +5,6 @@
     <string name="title_string">Title</string>
     <string name="add_note_string">Add note</string>
     <string name="note_string">Note</string>
+    <string name="save_string">Save</string>
+    <string name="delete_string">Delete</string>
 </resources>

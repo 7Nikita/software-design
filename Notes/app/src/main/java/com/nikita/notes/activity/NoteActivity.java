@@ -1,6 +1,7 @@
 package com.nikita.notes.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.EditText;
 import java.util.Calendar;
 
 import com.nikita.notes.R;
+import com.nikita.notes.model.Note;
+import com.nikita.notes.viewmodel.NoteViewModel;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -22,10 +25,14 @@ public class NoteActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
 
+    private NoteViewModel noteViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+
+        noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_description);
@@ -50,16 +57,33 @@ public class NoteActivity extends AppCompatActivity {
             title = Calendar.getInstance().getTime().toString();
         }
 
-        Intent data = new Intent();
-        data.putExtra(EXTRA_TITLE, title);
-        data.putExtra(EXTRA_DESCRIPTION, description);
+        Note note = new Note(title, description);
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {
-            data.putExtra(EXTRA_ID, id);
+            note.setId(id);
+            noteViewModel.update(note);
+        } else {
+            noteViewModel.insert(note);
         }
 
-        setResult(RESULT_OK, data);
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    private void deleteNote() {
+        String title = editTextTitle.getText().toString();
+        String description = editTextDescription.getText().toString();
+
+        Note note = new Note(title, description);
+        
+        int id = getIntent().getIntExtra(EXTRA_ID, -1);
+        if (id != -1) {
+            note.setId(id);
+            noteViewModel.delete(note);
+        }
+
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -74,6 +98,9 @@ public class NoteActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.save_note) {
             saveNote();
+            return true;
+        } else if (item.getItemId() == R.id.delete_note) {
+            deleteNote();
             return true;
         }
         return super.onOptionsItemSelected(item);
