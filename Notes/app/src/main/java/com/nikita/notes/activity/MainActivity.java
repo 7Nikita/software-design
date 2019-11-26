@@ -1,6 +1,7 @@
 package com.nikita.notes.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        }
         recyclerView.setHasFixedSize(true);
 
         final NoteAdapter noteAdapter = new NoteAdapter();
