@@ -36,9 +36,7 @@ public class NoteActivity extends AppCompatActivity {
 
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextDescription = findViewById(R.id.edit_text_description);
-
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
-
+        
         Intent intent = getIntent();
 
         if(intent.hasExtra(EXTRA_ID)) {
