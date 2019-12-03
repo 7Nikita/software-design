@@ -10,8 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import java.util.Calendar;
-
 import com.nikita.notes.R;
 import com.nikita.notes.model.Note;
 import com.nikita.notes.viewmodel.NoteViewModel;
@@ -19,6 +17,7 @@ import com.nikita.notes.viewmodel.NoteViewModel;
 public class NoteActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "com.nikita.notes.EXTRA_ID";
+    public static final String EXTRA_DATE = "com.nikita.notes.EXTRA_DARE";
     public static final String EXTRA_TITLE = "com.nikita.notes.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.nikita.notes.EXTRA_DESCRIPTION";
 
@@ -51,11 +50,11 @@ public class NoteActivity extends AppCompatActivity {
         String title = editTextTitle.getText().toString();
         String description = editTextDescription.getText().toString();
 
-        if (title.trim().isEmpty()) {
-            title = Calendar.getInstance().getTime().toString();
-        }
-
         Note note = new Note(title, description);
+
+        if (title.trim().isEmpty()) {
+            note.setTitle(note.getAddingDate());
+        }
 
         int id = getIntent().getIntExtra(EXTRA_ID, -1);
         if (id != -1) {
@@ -103,4 +102,5 @@ public class NoteActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

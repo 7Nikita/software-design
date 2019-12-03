@@ -1,4 +1,4 @@
-package com.nikita.notes;
+package com.nikita.notes.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -28,4 +28,5 @@ public interface NoteDAO {
 
     @Query("SELECT * FROM note_table")
     LiveData<List<Note>> getNotes();
+
 }

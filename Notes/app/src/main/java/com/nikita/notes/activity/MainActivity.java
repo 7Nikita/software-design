@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.nikita.notes.model.Note;
-import com.nikita.notes.NoteAdapter;
+import com.nikita.notes.adapter.NoteAdapter;
 import com.nikita.notes.viewmodel.NoteViewModel;
 import com.nikita.notes.R;
 
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NoteActivity.class);
                 intent.putExtra(NoteActivity.EXTRA_ID, note.getId());
                 intent.putExtra(NoteActivity.EXTRA_TITLE, note.getTitle());
+                intent.putExtra(NoteActivity.EXTRA_DATE, note.getAddingDate());
                 intent.putExtra(NoteActivity.EXTRA_DESCRIPTION, note.getDescription());
 
                 startActivity(intent);

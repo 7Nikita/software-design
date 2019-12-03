@@ -1,4 +1,4 @@
-package com.nikita.notes;
+package com.nikita.notes.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nikita.notes.R;
 import com.nikita.notes.model.Note;
 
 import java.util.ArrayList;

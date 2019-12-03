@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.nikita.notes.NoteDAO;
+import com.nikita.notes.dao.NoteDAO;
 import com.nikita.notes.model.Note;
 
 import java.util.List;
@@ -97,4 +97,5 @@ public class NoteRepository {
             return null;
         }
     }
+
 }
