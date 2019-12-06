@@ -1,18 +1,21 @@
 package com.nikita.notes.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.nikita.notes.TimestampConverter;
 
+import java.util.UUID;
 import java.util.Date;
 
 @Entity(tableName = "note_table")
 public class Note {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @NonNull
+    @PrimaryKey
+    private String id = UUID.randomUUID().toString();
 
     private String title;
 
@@ -27,11 +30,12 @@ public class Note {
         this.addingDate = TimestampConverter.toTimestamp(new Date());
     }
 
-    public int getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

@@ -40,4 +40,5 @@ public class NoteViewModel extends AndroidViewModel {
     public LiveData<List<Note>> getNotes() {
         return repository.getNotes();
     }
+
 }

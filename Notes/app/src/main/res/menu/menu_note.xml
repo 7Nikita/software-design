@@ -13,4 +13,5 @@
         android:icon="@drawable/ic_remove"
         android:title="@string/delete_string"
         app:showAsAction="ifRoom"/>
+
 </menu>

@@ -27,30 +27,33 @@ import static androidx.room.ForeignKey.CASCADE;
         }
 )
 public class TagNoteJoin {
-    @NonNull
-    private int tagId;
 
     @NonNull
-    public int noteId;
+    private String tagId;
 
-    public TagNoteJoin(int tagId, int noteId) {
+    @NonNull
+    private String noteId;
+
+    public TagNoteJoin(@NonNull String tagId, @NonNull String noteId) {
         this.tagId = tagId;
         this.noteId = noteId;
     }
 
-    public int getTagId() {
+    @NonNull
+    public String getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(@NonNull String tagId) {
         this.tagId = tagId;
     }
 
-    public int getNoteId() {
+    @NonNull
+    public String getNoteId() {
         return noteId;
     }
 
-    public void setNoteId(int noteId) {
+    public void setNoteId(@NonNull String noteId) {
         this.noteId = noteId;
     }
 

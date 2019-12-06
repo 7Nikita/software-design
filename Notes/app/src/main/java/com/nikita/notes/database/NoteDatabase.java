@@ -13,7 +13,7 @@ import com.nikita.notes.model.Note;
 import com.nikita.notes.model.Tag;
 import com.nikita.notes.model.TagNoteJoin;
 
-@Database(entities = {Note.class, Tag.class, TagNoteJoin.class}, version = 3)
+@Database(entities = {Note.class, Tag.class, TagNoteJoin.class}, version = 4)
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance;

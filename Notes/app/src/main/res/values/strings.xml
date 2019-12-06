@@ -7,4 +7,7 @@
     <string name="note_string">Note</string>
     <string name="save_string">Save</string>
     <string name="delete_string">Delete</string>
+    <string name="add_tag_string">Add tag</string>
+    <string name="add_string">Add</string>
+    <string name="tag_title">Tag title</string>
 </resources>

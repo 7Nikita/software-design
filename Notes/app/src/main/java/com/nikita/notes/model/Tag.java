@@ -1,13 +1,23 @@
 package com.nikita.notes.model;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "tag_table")
+import java.util.UUID;
+
+@Entity(
+        tableName = "tag_table",
+        indices = {
+                @Index(value = "title", unique = true)
+        }
+)
 public class Tag {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @NonNull
+    @PrimaryKey
+    private String id = UUID.randomUUID().toString();
 
     private String title;
 
@@ -15,9 +25,10 @@ public class Tag {
         this.title = title;
     }
 
-    public int getId() { return id; }
+    @NonNull
+    public String getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(@NonNull String id) { this.id = id; }
 
     public String getTitle() { return title; }
 
