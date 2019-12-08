@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.nikita.notes.dao.TagNoteJoinDAO;
+import com.nikita.notes.model.Note;
 import com.nikita.notes.model.Tag;
 import com.nikita.notes.model.TagNoteJoin;
 
@@ -34,6 +35,10 @@ public class TagNoteJoinRepository {
 
     public LiveData<List<Tag>> selectTagsForNote(String noteId) {
         return tagNoteJoinDAO.selectTagsForNote(noteId);
+    }
+
+    public LiveData<List<Note>> selectNotesForTag(String tagId) {
+        return tagNoteJoinDAO.selectNotesForTag(tagId);
     }
 
     private static class InsertTagNoteJoinAsyncTask extends AsyncTask<TagNoteJoin, Void, Void> {

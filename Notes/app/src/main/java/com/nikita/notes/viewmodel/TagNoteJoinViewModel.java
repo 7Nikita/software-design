@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.nikita.notes.database.TagNoteJoinRepository;
+import com.nikita.notes.model.Note;
 import com.nikita.notes.model.Tag;
 import com.nikita.notes.model.TagNoteJoin;
 
@@ -31,6 +32,10 @@ public class TagNoteJoinViewModel extends AndroidViewModel {
 
     public LiveData<List<Tag>> selectTagsForNote(String noteId) {
         return repository.selectTagsForNote(noteId);
+    }
+
+    public LiveData<List<Note>> selectNotesForTag(String tagId) {
+        return repository.selectNotesForTag(tagId);
     }
 
     public void deleteTagsForNote(String noteId) {

@@ -23,7 +23,7 @@ public interface TagNoteJoinDAO {
 
     @Query("SELECT note_table.id, note_table.title, note_table.description, note_table.addingDate " +
             "FROM note_table " +
-            "INNER JOIN tag_note_join ON note_table.id = tag_note_join.tagId " +
+            "INNER JOIN tag_note_join ON note_table.id = tag_note_join.noteId " +
             "WHERE tag_note_join.tagId = :tagId")
     LiveData<List<Note>> selectNotesForTag(String tagId);
 
