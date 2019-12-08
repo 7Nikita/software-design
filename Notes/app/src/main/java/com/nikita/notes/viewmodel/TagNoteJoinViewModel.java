@@ -33,4 +33,8 @@ public class TagNoteJoinViewModel extends AndroidViewModel {
         return repository.selectTagsForNote(noteId);
     }
 
+    public void deleteTagsForNote(String noteId) {
+        repository.deleteTagNoteJoins(noteId);
+    }
+
 }

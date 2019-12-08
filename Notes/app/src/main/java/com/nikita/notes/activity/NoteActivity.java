@@ -28,13 +28,12 @@ public class NoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.nikita.notes.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.nikita.notes.EXTRA_DESCRIPTION";
 
-    private EditText editTextTagName;
     private EditText editTextTitle;
+    private EditText editTextTagName;
     private EditText editTextDescription;
 
-    private String _noteId;
-
-    private Button buttonAddTag;
+    private Note note;
+    private boolean shouldDeleteNote = true;
 
     private TagViewModel tagViewModel;
     private NoteViewModel noteViewModel;
@@ -49,7 +48,7 @@ public class NoteActivity extends AppCompatActivity {
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         tagNoteJoinViewModel = new ViewModelProvider(this).get(TagNoteJoinViewModel.class);
 
-        buttonAddTag = findViewById(R.id.button_add_tag);
+        final Button buttonAddTag = findViewById(R.id.button_add_tag);
         editTextTitle = findViewById(R.id.edit_text_title);
         editTextTagName = findViewById(R.id.edti_text_tag_name);
         editTextDescription = findViewById(R.id.edit_text_description);
@@ -62,25 +61,33 @@ public class NoteActivity extends AppCompatActivity {
         recyclerView.setAdapter(tagAdapter);
 
         final Intent intent = getIntent();
-
         if (intent.hasExtra(EXTRA_ID)) {
-            editTextTitle.setText(intent.getStringExtra(EXTRA_TITLE));
-            editTextDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
+            shouldDeleteNote = false;
+            final String id = intent.getStringExtra(EXTRA_ID);
+            final String title = intent.getStringExtra(EXTRA_TITLE);
+            final String description = intent.getStringExtra(EXTRA_DESCRIPTION);
 
-            final String noteId = intent.getStringExtra(EXTRA_ID);
-            _noteId = noteId;
-            tagNoteJoinViewModel.selectTagsForNote(noteId).observe(this, tagAdapter::setTags);
+            editTextTitle.setText(title);
+            editTextDescription.setText(description);
+
+            note = new Note(title, description);
+            note.setId(id);
+        } else {
+            note = new Note("", "");
+            noteViewModel.insert(note);
         }
+
+        tagNoteJoinViewModel.selectTagsForNote(note.getId()).observe(this, tagAdapter::setTags);
 
         buttonAddTag.setOnClickListener(v -> {
                     final String tagTitle = editTextTagName.getText().toString();
-                    tagViewModel.makeLink(tagTitle, _noteId, tagNoteJoinViewModel);
+                    tagViewModel.makeLink(tagTitle, note.getId(), tagNoteJoinViewModel);
                     editTextTagName.setText("");
                 }
         );
 
         tagAdapter.setOnItemClickListener(tag -> {
-                    tagNoteJoinViewModel.delete(new TagNoteJoin(tag.getId(), _noteId));
+                    tagNoteJoinViewModel.delete(new TagNoteJoin(tag.getId(), note.getId()));
                 }
         );
 
@@ -88,28 +95,21 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void saveNote() {
+        shouldDeleteNote = false;
         final String title = editTextTitle.getText().toString();
         final String description = editTextDescription.getText().toString();
 
-        final Note note = new Note(title, description);
+        note.setTitle(title.trim().isEmpty() ? note.getAddingDate() : title);
+        note.setDescription(description);
 
-        if (title.trim().isEmpty()) {
-            note.setTitle(note.getAddingDate());
-        }
-
-        final String id = getIntent().getStringExtra(EXTRA_ID);
-        if (id != null) {
-            note.setId(id);
-            noteViewModel.update(note);
-        } else {
-            noteViewModel.insert(note);
-        }
+        noteViewModel.update(note);
 
         setResult(RESULT_OK);
         finish();
     }
 
     private void deleteNote() {
+        shouldDeleteNote = false;
         final String title = editTextTitle.getText().toString();
         final String description = editTextDescription.getText().toString();
 
@@ -118,7 +118,7 @@ public class NoteActivity extends AppCompatActivity {
         final String id = getIntent().getStringExtra(EXTRA_ID);
         if (id != null) {
             note.setId(id);
-            noteViewModel.delete(note);
+            noteViewModel.delete(note, tagNoteJoinViewModel);
         }
 
         setResult(RESULT_OK);
@@ -142,6 +142,14 @@ public class NoteActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (shouldDeleteNote) {
+            noteViewModel.delete(note, tagNoteJoinViewModel);
+        }
     }
 
 }

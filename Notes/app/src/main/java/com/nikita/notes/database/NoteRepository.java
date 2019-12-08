@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import com.nikita.notes.dao.NoteDAO;
 import com.nikita.notes.model.Note;
+import com.nikita.notes.viewmodel.TagNoteJoinViewModel;
 
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class NoteRepository {
         new UpdateNoteAsyncTask(noteDAO).execute(note);
     }
 
-    public void delete(Note note) {
-        new DeleteNoteAsyncTask(noteDAO).execute(note);
+    public void delete(Note note, TagNoteJoinViewModel tagNoteJoinViewModel) {
+        new DeleteNoteAsyncTask(noteDAO).execute(new NoteExtendedParams(note, tagNoteJoinViewModel));
     }
 
     public void clear() {
@@ -70,7 +71,7 @@ public class NoteRepository {
         }
     }
 
-    private static class DeleteNoteAsyncTask extends AsyncTask<Note, Void, Void> {
+    private static class DeleteNoteAsyncTask extends AsyncTask<NoteExtendedParams, Void, Void> {
         private NoteDAO noteDAO;
 
         private DeleteNoteAsyncTask(NoteDAO noteDAO) {
@@ -78,8 +79,9 @@ public class NoteRepository {
         }
 
         @Override
-        protected Void doInBackground(Note... notes) {
-            noteDAO.delete(notes[0]);
+        protected Void doInBackground(NoteExtendedParams... params) {
+            noteDAO.delete(params[0].note);
+            params[0].tagNoteJoinViewModel.deleteTagsForNote(params[0].note.getId());
             return null;
         }
     }
@@ -95,6 +97,16 @@ public class NoteRepository {
         protected Void doInBackground(Void... voids) {
             noteDAO.clear();
             return null;
+        }
+    }
+
+    private class NoteExtendedParams {
+        public Note note;
+        public TagNoteJoinViewModel tagNoteJoinViewModel;
+
+        public NoteExtendedParams(Note note, TagNoteJoinViewModel tagNoteJoinViewModel) {
+            this.note = note;
+            this.tagNoteJoinViewModel = tagNoteJoinViewModel;
         }
     }
 

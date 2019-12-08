@@ -28,6 +28,10 @@ public class TagNoteJoinRepository {
         new DeleteTagNoteJoinAsyncTask(tagNoteJoinDAO).execute(tagNoteJoin);
     }
 
+    public void deleteTagNoteJoins(String noteId) {
+        new DeleteTagsForNoteAsyncTask(tagNoteJoinDAO).execute(noteId);
+    }
+
     public LiveData<List<Tag>> selectTagsForNote(String noteId) {
         return tagNoteJoinDAO.selectTagsForNote(noteId);
     }
