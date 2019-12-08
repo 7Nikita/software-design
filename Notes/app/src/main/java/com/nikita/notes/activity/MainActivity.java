@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,12 +29,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FloatingActionButton buttonAddNote = findViewById(R.id.button_add_note);
-        buttonAddNote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-                startActivity(intent);
-            }
+        buttonAddNote.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+            startActivity(intent);
         });
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -55,17 +51,14 @@ public class MainActivity extends AppCompatActivity {
         noteViewModel = new ViewModelProvider(this).get(NoteViewModel.class);
         noteViewModel.getNotes().observe(this, noteAdapter::setNotes);
 
-        noteAdapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Note note) {
-                Intent intent = new Intent(MainActivity.this, NoteActivity.class);
-                intent.putExtra(NoteActivity.EXTRA_ID, note.getId());
-                intent.putExtra(NoteActivity.EXTRA_TITLE, note.getTitle());
-                intent.putExtra(NoteActivity.EXTRA_DATE, note.getAddingDate());
-                intent.putExtra(NoteActivity.EXTRA_DESCRIPTION, note.getDescription());
+        noteAdapter.setOnItemClickListener(note -> {
+            Intent intent = new Intent(MainActivity.this, NoteActivity.class);
+            intent.putExtra(NoteActivity.EXTRA_ID, note.getId());
+            intent.putExtra(NoteActivity.EXTRA_TITLE, note.getTitle());
+            intent.putExtra(NoteActivity.EXTRA_DATE, note.getAddingDate());
+            intent.putExtra(NoteActivity.EXTRA_DESCRIPTION, note.getDescription());
 
-                startActivity(intent);
-            }
+            startActivity(intent);
         });
     }
 
