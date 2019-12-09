@@ -19,4 +19,13 @@
         android:title="@string/delete_all_notes"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/button_sort_title"
+        android:title="@string/sort_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/button_sort_date"
+        android:title="@string/sort_date"
+        app:showAsAction="never" />
 </menu>

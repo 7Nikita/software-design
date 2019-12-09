@@ -32,6 +32,8 @@ public class TagRepository {
 
     public LiveData<List<Tag>> getTags() { return tags; }
 
+    public LiveData<List<Tag>> getTagsSortedByTitle() { return tagDAO.getTagsSortedByTitle(); }
+
     public void makeLink(String tagTitle, String noteId, TagNoteJoinViewModel tagNoteJoinViewModel) {
         TagExtendedParams params = new TagExtendedParams(tagTitle, noteId, tagNoteJoinViewModel);
         new MakeLinkAsyncTask(tagDAO).execute(params);

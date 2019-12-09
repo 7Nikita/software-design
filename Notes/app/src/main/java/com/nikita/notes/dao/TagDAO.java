@@ -26,6 +26,9 @@ public interface TagDAO {
     @Query("SELECT * FROM tag_table")
     LiveData<List<Tag>> getTags();
 
+    @Query("SELECT * FROM tag_table ORDER BY title")
+    LiveData<List<Tag>> getTagsSortedByTitle();
+
     @Query("SELECT * FROM tag_table")
     List<Tag> getTagList();
 }

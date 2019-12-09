@@ -41,4 +41,12 @@ public class NoteViewModel extends AndroidViewModel {
         return repository.getNotes();
     }
 
+    public LiveData<List<Note>> getNotesSortedByDate() {
+        return repository.getNotesSortedByDate();
+    }
+
+    public LiveData<List<Note>> getNotesSortedByTitle() {
+        return repository.getNotesSortedByTitle();
+    }
+
 }

@@ -32,4 +32,6 @@ public class TagViewModel extends AndroidViewModel {
     public void makeLink(String tagTitle, String noteId, TagNoteJoinViewModel tagNoteJoinViewModel) {
         repository.makeLink(tagTitle, noteId, tagNoteJoinViewModel);
     }
+
+    public LiveData<List<Tag>> getTagsSortedByTitle() { return repository.getTagsSortedByTitle(); }
 }

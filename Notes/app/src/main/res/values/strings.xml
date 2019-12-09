@@ -12,4 +12,6 @@
     <string name="tag_title">Tag title</string>
     <string name="delete_all_notes">Delete all notes</string>
     <string name="refresh_string">Refresh</string>
+    <string name="sort_title">Sort by title</string>
+    <string name="sort_date">Sort by date</string>
 </resources>

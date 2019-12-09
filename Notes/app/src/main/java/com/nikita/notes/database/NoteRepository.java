@@ -43,6 +43,15 @@ public class NoteRepository {
         return notes;
     }
 
+    public LiveData<List<Note>> getNotesSortedByDate() {
+        return noteDAO.getNotesSortedByDate();
+    }
+
+    public LiveData<List<Note>> getNotesSortedByTitle() {
+        return noteDAO.getNotesSortedByTitle();
+    }
+
+
     private static class InsertNoteAsyncTask extends AsyncTask<Note, Void, Void> {
         private NoteDAO noteDAO;
 

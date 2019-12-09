@@ -29,4 +29,10 @@ public interface NoteDAO {
     @Query("SELECT * FROM note_table")
     LiveData<List<Note>> getNotes();
 
+    @Query("SELECT * FROM note_table ORDER BY title")
+    LiveData<List<Note>> getNotesSortedByTitle();
+
+    @Query("SELECT * FROM note_table ORDER BY addingDate DESC ")
+    LiveData<List<Note>> getNotesSortedByDate();
+
 }

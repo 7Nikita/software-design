@@ -69,15 +69,18 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
 
-        MenuItem item = menu.findItem(R.id.switch_mode);
+        final MenuItem item = menu.findItem(R.id.switch_mode);
+        final MenuItem buttonSortDate = menu.findItem(R.id.button_sort_date);
         item.setActionView(R.layout.switch_layout);
 
         aSwitch = item.getActionView().findViewById(R.id.switchForActionBar);
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
+                buttonSortDate.setVisible(false);
                 recyclerView.setAdapter(tagAdapter);
                 tagViewModel.getTags().observe(this, tagAdapter::setTags);
             } else {
+                buttonSortDate.setVisible(true);
                 recyclerView.setAdapter(noteAdapter);
                 noteViewModel.getNotes().observe(this, noteAdapter::setNotes);
             }
@@ -87,14 +90,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.delete_all_notes) {
+        final int itemId = item.getItemId();
+        if (itemId == R.id.delete_all_notes) {
             noteViewModel.clear();
             return true;
-        } else if (item.getItemId() == R.id.button_refresh) {
+        } else if (itemId == R.id.button_refresh) {
             recyclerView.setAdapter(noteAdapter);
             noteViewModel.getNotes().observe(this, noteAdapter::setNotes);
             aSwitch.setChecked(false);
             return true;
+        } else if (itemId == R.id.button_sort_date) {
+            noteViewModel.getNotesSortedByDate().observe(this, noteAdapter::setNotes);
+        } else if (itemId == R.id.button_sort_title) {
+            if (aSwitch.isChecked()) {
+                tagViewModel.getTagsSortedByTitle().observe(this, tagAdapter::setTags);
+            } else {
+                noteViewModel.getNotesSortedByTitle().observe(this, noteAdapter::setNotes);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
