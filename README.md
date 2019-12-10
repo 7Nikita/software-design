@@ -3,6 +3,7 @@
 - [Tasks](#Tasks)
   - [Lab 1 - Hello world](#1-hello-world)
   - [Lab 2 - Numbers Mason, what do they mean?](#2-numbers-mason-what-do-they-mean)
+  - [Lab 3 - Gotta note them all!](#3-gotta-note-them-all)
 
 ## 1. Hello world
 
@@ -20,3 +21,11 @@
 4. Each set of functions (numbers + basic functions and scientific functions) should be in separate fragments.
 5. For landscape device orientation app should always be in scientific mode.
 6. Create a 'demo' build flavor with only basic functions available for both screen orientations. User should be able to have both 'demo' and 'full' versions on device at the same time.
+
+## 3. Gotta note them all!
+
+1. Create 'Notes' application. (see Google Keep for reference).
+2. App should show a list or a grid of created notes depending on screen orientation (list for portrait and grid for landscape).
+3. Each note should consist of title, body and tag list. Title may not be empty. If user left it out empty, a current date should be used instead. Tag list may be empty.
+4. List or grid may be sorted by date or note title. User can also browse notes by particular tag.
+5. Any data storage option may be used. Note list should be persisted across app launches.

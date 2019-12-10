@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/switch_mode"
+        android:title=""
+        android:actionLayout="@layout/switch_layout"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/button_refresh"
+        android:icon="@drawable/ic_refresh"
+        android:title="@string/refresh_string"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/delete_all_notes"
+        android:title="@string/delete_all_notes"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/button_sort_title"
+        android:title="@string/sort_title"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/button_sort_date"
+        android:title="@string/sort_date"
+        app:showAsAction="never" />
+</menu>
