@@ -4,6 +4,7 @@
   - [Lab 1 - Hello world](#1-hello-world)
   - [Lab 2 - Numbers Mason, what do they mean?](#2-numbers-mason-what-do-they-mean)
   - [Lab 3 - Gotta note them all!](#3-gotta-note-them-all)
+  - [Lab 4 - Yet another feed](#4-yet-another-feed)
 
 ## 1. Hello world
 
@@ -29,3 +30,15 @@
 3. Each note should consist of title, body and tag list. Title may not be empty. If user left it out empty, a current date should be used instead. Tag list may be empty.
 4. List or grid may be sorted by date or note title. User can also browse notes by particular tag.
 5. Any data storage option may be used. Note list should be persisted across app launches.
+
+## 4. Yet another feed
+1. Create RSS reader application (see Flipboard for reference).
+2. On first launch app asks user to type in RSS feed URL. This can be changed later.
+3. RSS entities are displayed within list view. EAch entity should contain date, title, preview of content and an image (if provided by feed source).
+4. When user taps on list item, a WebView with full entity should be displayed.
+5. 10 recently fetched news should be cached and available to user even if no network is available.
+6. App should track and display network state (icon, snackbar, etc). User should be aware when app goes offline and online.
+7. All network operations should not block user interface and should have loading indicator if necessary.
+
+
+
